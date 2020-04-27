@@ -1,6 +1,6 @@
 # chickenCam
 
-This is a arduino sketch for a esp23cam based on the ususal example.
+This is an arduino sketch for a esp32 cam based on the ususal example.
 changes:
 1) ripped out facial rec.
 2) stream starts when connected.
