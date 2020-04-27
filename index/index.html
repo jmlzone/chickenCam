@@ -752,9 +752,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	      var y = evtObj.clientY;
 	      var dx = x<(w/3) ? -1 : (x > (2*(w/3)) ? 1 : 0);
 	      var dy = y<(h/3) ? -1 : (y > (2*(h/3)) ? 1 : 0);
-	      //var coor = "X coords: " + x + ", Y coords: " + y;
-	      //document.getElementById("temp_field").innerHTML =  coor;
-	      //document.getElementById("stream-container").innerHTML = "Width: " + w + "<br>Height: " + h + "<br>dx= " + dx + " dy= " + dy ;
 	      if(dy !=0) {
 		  var query = `${baseHost}/control?var=servov&val=${dy}`
 		  fetch(query)
