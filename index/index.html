@@ -553,11 +553,12 @@
             </div>
         </section>
         <script>
-	  document.addEventListener("click", myClickFunction);
+	  document.getElementById('stream-container').addEventListener("click", myClickFunction);
 
 document.addEventListener('DOMContentLoaded', function (event) {
   var baseHost = document.location.origin
-  var streamUrl = baseHost + ':81'
+    var streamUrl = baseHost + ':81'
+    //var streamUrl = 'http://192.168.1.213:81'
 
   const hide = el => {
     el.classList.add('hidden')
@@ -746,12 +747,17 @@ document.addEventListener('DOMContentLoaded', function (event) {
 })
 	  function  myClickFunction(evtObj) {
 	      var baseHost = document.location.origin
-	      var w = window.innerWidth;
-	      var h = window.innerHeight;
+	      //var baseHost = 'http://192.168.1.213'
+	      var img = document.getElementById('stream'); 
+	      var rect = img.getBoundingClientRect();
+	      //console.log(rect.top, rect.right, rect.bottom, rect.left);
+	      var w = img.clientWidth;
+	      var h = img.clientHeight;
 	      var x = evtObj.clientX;
 	      var y = evtObj.clientY;
-	      var dx = x<(w/3) ? -1 : (x > (2*(w/3)) ? 1 : 0);
-	      var dy = y<(h/3) ? -1 : (y > (2*(h/3)) ? 1 : 0);
+	      //console.log(`width ${w}, height ${h}   x ${x}, y ${y}`); 
+	      var dx = (x-rect.left) <(w/3) ? -1 : ((x-rect.left) > (2*(w/3)) ? 1 : 0);
+	      var dy = (y-rect.top)<(h/3) ? -1 : ((y-rect.top) > (2*(h/3)) ? 1 : 0);
 	      if(dy !=0) {
 		  var query = `${baseHost}/control?var=servov&val=${dy}`
 		  fetch(query)
